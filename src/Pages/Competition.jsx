@@ -6,7 +6,7 @@ function Competition() {
     const [competition, setCompetition] = useState({})
 
     function getCompetition() {
-        const url = `http://localhost:3030/competition/${id}`;
+        const url = `${process.env.REACT_APP_FETCH_URL}/competition/${id}`;
         fetch(url)
           .then((res) => res.json())
           .then((data) => {
