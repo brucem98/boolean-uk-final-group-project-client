@@ -29,7 +29,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<Home competitions={competitions} />}/>
-        <Route exact path="/competition/:id" element={<Competition setCompetitions={setCompetitions} />}/>
+        <Route exact path="/competition/:id" element={<Competition />}/>
       </Routes>
     </BrowserRouter>
   );
