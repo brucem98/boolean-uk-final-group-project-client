@@ -28,8 +28,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path="/" element={<Home competitions={competitions} />}/>
-        <Route exact path="/competition/:id" element={<Competition />}/>
+        <Route exact path="/" element={<Home competitions={competitions} />} />
+        <Route exact path="/competition/:id" element={<Competition />} />
       </Routes>
     </BrowserRouter>
   );
