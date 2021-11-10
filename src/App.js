@@ -1,9 +1,10 @@
 import './App.css';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import React from "react"
-import reactDom from 'react-dom';
 import Home from './Pages/Home';
 import { useEffect, useState } from "react"
+
+import Competition from "./Pages/Competition";
 
 function App() {
 
@@ -27,8 +28,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route exact path="/" element={<Home competitions={competitions} />}>
-        </Route>
+        <Route exact path="/" element={<Home competitions={competitions} />}/>
+        <Route exact path="/competition/:id" element={<Competition setCompetitions={setCompetitions} />}/>
       </Routes>
     </BrowserRouter>
   );
