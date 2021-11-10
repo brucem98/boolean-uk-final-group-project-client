@@ -11,7 +11,7 @@ function App() {
   const [competitions, setCompetitions] = useState([])
 
   function getCompetition() {
-    const url = `${process.env.REACT_APP_FETCH_URL}`;
+    const url = `${process.env.REACT_APP_FETCH_URL}/competition`;
     fetch(url)
       .then((res) => res.json())
       .then((Data) => {
