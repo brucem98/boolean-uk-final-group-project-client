@@ -9,9 +9,8 @@ function Competition() {
         const url = `http://localhost:3030/competition/${id}`;
         fetch(url)
           .then((res) => res.json())
-          .then((Data) => {
-            console.log(Data)
-            setCompetition(Data.data)
+          .then((data) => {
+            setCompetition(data.data)
           })
       }
     
