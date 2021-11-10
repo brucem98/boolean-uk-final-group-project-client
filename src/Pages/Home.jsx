@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+
 import {useNavigate}  from "react-router-dom"
 
 function Home(props) {
@@ -16,7 +16,7 @@ function Home(props) {
                 <p>Difficulty: {competition.difficulty}</p>
                 <p>Prize Pool: {competition.prizePool}</p>
                 <p>Capacity: {competition.capacity}</p>
-                <img src={competition.img} alt="Competition Image" />
+                <img src={competition.img} alt="Competition" />
                 <button onClick = {(event)=>handleClick(event, competition)}>More Details</button>
             </li>
         )

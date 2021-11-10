@@ -11,7 +11,7 @@ function App() {
   const [competitions, setCompetitions] = useState([])
 
   function getCompetition() {
-    const url = `http://localhost:3030/competition`;
+    const url = `${process.env.REACT_APP_FETCH_URL}/competition`;
     fetch(url)
       .then((res) => res.json())
       .then((Data) => {
@@ -29,10 +29,11 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<Home competitions={competitions} />}/>
-        <Route exact path="/competition/:id" element={<Competition setCompetitions={setCompetitions} />}/>
+        <Route exact path="/competition/:id" element={<Competition />}/>
       </Routes>
     </BrowserRouter>
   );
 }
+
 
 export default App;
