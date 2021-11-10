@@ -1,7 +1,12 @@
 import { useEffect, useState } from "react"
-
+import {useNavigate}  from "react-router-dom"
 
 function Home(props) {
+    const navigate = useNavigate();
+    function handleClick (event, competition) {
+        event.preventDefault()
+        navigate(`/competition/${competition.id}`)
+    }
     const competitions = props.competitions.map((competition, index) => {
         return (
             <li key={index}>
@@ -11,10 +16,8 @@ function Home(props) {
                 <p>Difficulty: {competition.difficulty}</p>
                 <p>Prize Pool: {competition.prizePool}</p>
                 <p>Capacity: {competition.capacity}</p>
-                <img src={competition.img} alt="" />
-                <a href="">
-                    <button>More Details</button>
-                </a>
+                <img src={competition.img} alt="Competition Image" />
+                <button onClick = {(event)=>handleClick(event, competition)}>More Details</button>
             </li>
         )
     })
