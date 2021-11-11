@@ -9,14 +9,15 @@ import Competition from "./Pages/Competition";
 function App() {
 
   const [competitions, setCompetitions] = useState([])
+  const [dogs, setDogs] = useState([])
 
   function getCompetition() {
     const url = `${process.env.REACT_APP_FETCH_URL}/competition`;
     fetch(url)
       .then((res) => res.json())
-      .then((Data) => {
-        console.log(Data)
-        setCompetitions(Data.data)
+      .then((data) => {
+        console.log("Incoming Competitions Data: ", data)
+        setCompetitions(data.data)
       })
   }
 
@@ -25,11 +26,26 @@ function App() {
   }, [])
   console.log("competitions", competitions)
 
+  function getDog() {
+    const url = `${process.env.REACT_APP_FETCH_URL}/dogs`;
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log("Incoming Dogs Data: ", data)
+        setDogs(data.data)
+      })
+  }
+
+  useEffect(() => {
+    getDog()
+  }, [])
+  console.log("dogs", dogs)
+
   return (
     <BrowserRouter>
       <Routes>
         <Route exact path="/" element={<Home competitions={competitions} />} />
-        <Route exact path="/competition/:id" element={<Competition />} />
+        <Route exact path="/competition/:id" element={<Competition dogs={dogs} />} />
       </Routes>
     </BrowserRouter>
   );
