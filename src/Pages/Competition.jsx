@@ -1,7 +1,17 @@
-import { useParams } from "react-router-dom"
+import { useParams, useNavigate } from "react-router-dom"
 import { useEffect, useState } from "react"
 
+
 function Competition(props) {
+    const navigate = useNavigate();
+    function handleClick (event, ticket) {
+      event.preventDefault()
+      navigate(`/tickets`)
+    }
+
+
+
+
     const dogs = props.dogs
     const competitions = props.competitions
 
@@ -14,7 +24,7 @@ function Competition(props) {
     console.log("competition stateobject: ", competition)
     
     function getCompetition() {
-        const url = `${process.env.REACT_APP_FETCH_URL}/competition/${id}`;
+        const url = `${process.env.REACT_APP_FETCH_URL}/competitions/${id}`;
         console.log("url: ", url)
         fetch(url)
           .then((res) => res.json())
@@ -57,8 +67,10 @@ function Competition(props) {
       <header>
         <h1>{competitionTitle.exhibitionName}</h1>
       </header>
+      <aside>
+      <button onClick = {handleClick}>Buy Tickets</button>
+      </aside>
       <ul>
-      
         {mappedDogs}
       </ul>
       </>
