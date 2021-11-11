@@ -5,7 +5,7 @@ function Home(props) {
     const navigate = useNavigate();
     function handleClick (event, competition) {
         event.preventDefault()
-        navigate(`/competition/${competition.id}`)
+        navigate(`/competitions/${competition.id}`)
     }
     const competitions = props.competitions.map((competition, index) => {
         return (
