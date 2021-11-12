@@ -8,7 +8,7 @@ function Competition(props) {
       event.preventDefault()
       navigate(`/tickets`)
     }
-    
+
     function handleClick2 (event, ticket) {
       event.preventDefault()
       navigate(`/register`)
@@ -65,7 +65,6 @@ function Competition(props) {
     })
  
 
-    
 
     return (
       <>
