@@ -64,6 +64,7 @@ function Competition(props) {
         <img src = {filteredDog.img} alt = "dogs" />
         </li>
       )
+    })
      
  
 
