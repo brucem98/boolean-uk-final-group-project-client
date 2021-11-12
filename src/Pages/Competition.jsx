@@ -2,13 +2,21 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 function Competition(props) {
-  const navigate = useNavigate();
-  function handleClick(event, ticket) {
-    event.preventDefault();
-    navigate(`/tickets`);
-  }
+
+    const navigate = useNavigate();
+    function handleClick (event, ticket) {
+      event.preventDefault()
+      navigate(`/tickets`)
+    }
+    
+    function handleClick2 (event, ticket) {
+      event.preventDefault()
+      navigate(`/register`)
+    }
+  
   const dogs = props.dogs;
   const competitions = props.competitions;
+
 
   console.log("props inside competition: ", props);
   console.log("dogs in competition: ", dogs);
@@ -63,7 +71,12 @@ function Competition(props) {
         <h1>{competitionTitle.exhibitionName}</h1>
       </header>
       <aside>
-        <button onClick={handleClick}>Buy Tickets</button>
+
+      <button onClick = {handleClick}>Buy Tickets</button>
+      <button onClick = {handleClick2}>Register for Competition</button>
+
+    
+
       </aside>
       <ul>{mappedDogs}</ul>
     </>
