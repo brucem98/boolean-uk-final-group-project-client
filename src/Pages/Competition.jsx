@@ -8,7 +8,7 @@ function Competition(props) {
       event.preventDefault()
       navigate(`/tickets`)
     }
-    
+
     function handleClick2 (event, ticket) {
       event.preventDefault()
       navigate(`/register`)
@@ -60,10 +60,13 @@ function Competition(props) {
         <p>Breed: {filteredDog.breed}</p>
         <p>Age: {filteredDog.age}</p>
         <p>Shot: {filteredDog.shotStatus.toString()}</p>
-        <img src={filteredDog.img} alt="dogs" />
-      </li>
-    );
-  });
+
+        <img src = {filteredDog.img} alt = "dogs" />
+        </li>
+      )
+     
+ 
+
 
   return (
     <>
