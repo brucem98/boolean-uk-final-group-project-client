@@ -6,6 +6,7 @@ import { useEffect, useState } from "react"
 
 import Competition from "./Pages/Competition";
 import Tickets from "./Pages/Tickets";
+import Register from "./Pages/Register";
 
 function App() {
 
@@ -18,7 +19,7 @@ function App() {
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        console.log("Incoming Competitions Data: ", data)
+        
         setCompetitions(data.data)
       })
   }
@@ -33,7 +34,7 @@ function App() {
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        console.log("Incoming Dogs Data: ", data)
+       
         setDogs(data.data)
       })
   }
@@ -48,7 +49,7 @@ function App() {
     fetch(url)
       .then((res) => res.json())
       .then((data) => {
-        console.log("Incoming Tickets Data: ", data)
+       
         setTickets(data.data)
       })
   }
@@ -66,6 +67,7 @@ function App() {
         <Route exact path="/" element={<Home competitions={competitions} />} />
         <Route exact path="/competitions/:id" element={<Competition competitions={competitions} dogs={dogs} />} />
         <Route exact path="/tickets" element={<Tickets tickets={tickets} />} />
+        <Route exact path="/register" element={<Register />}/>
       </Routes>
     </BrowserRouter>
   );

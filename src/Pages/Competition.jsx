@@ -8,6 +8,11 @@ function Competition(props) {
       event.preventDefault()
       navigate(`/tickets`)
     }
+    
+    function handleClick2 (event, ticket) {
+      event.preventDefault()
+      navigate(`/register`)
+    }
 
 
 
@@ -69,6 +74,7 @@ function Competition(props) {
       </header>
       <aside>
       <button onClick = {handleClick}>Buy Tickets</button>
+      <button onClick = {handleClick2}>Register for Competition</button>
       </aside>
       <ul>
         {mappedDogs}
