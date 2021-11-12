@@ -6,21 +6,7 @@ function Home(props) {
         event.preventDefault()
         navigate(`/competitions/${competition.id}`)
     }
-    const competitions = props.competitions.map((competition, index) => {
-        return (
-            <li key={index}>
-                <h3>{competition.exhibitionName}</h3>
-                <p>Date: {competition.date}</p>
-                <p>Location: {competition.location}</p>
-                <p>Difficulty: {competition.difficulty}</p>
-                <p>Prize Pool: {competition.prizePool}</p>
-                <p>Capacity: {competition.capacity}</p>
-                <img src={competition.img} alt="Competition" />
-                <button onClick = {(event)=>handleClick(event, competition)}>More Details</button>
-            </li>
-        )
-    })
-
+    
   const competitions = props.competitions.map((competition, index) => {
     return (
       <li key={index}>
