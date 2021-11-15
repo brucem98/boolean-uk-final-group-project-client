@@ -1,26 +1,25 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-function Competition(props) {
+function Competition({ dogs, competitions }) {
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
-    function handleClick (event, ticket) {
-      event.preventDefault()
-      navigate(`/tickets`)
-    }
+  function handleClick(event) {
+    event.preventDefault();
+    navigate(`/tickets`);
+  }
 
-    function handleClick2 (event, ticket) {
-      event.preventDefault()
-      navigate(`/register`)
-    }
-  
-  const dogs = props.dogs;
-  const competitions = props.competitions;
+  function handleClick2(event) {
+    event.preventDefault();
+    navigate(`/register`);
+  }
 
+  // const dogs = props.dogs;
+  // const competitions = props.competitions;
 
-  console.log("props inside competition: ", props);
-  console.log("dogs in competition: ", dogs);
-  console.log("competitions in Competition", competitions);
+  // console.log("props inside competition: ", props);
+  // console.log("dogs in competition: ", dogs);
+  // console.log("competitions in Competition", competitions);
 
   const { id } = useParams();
   const [competition, setCompetition] = useState();
@@ -38,7 +37,6 @@ function Competition(props) {
   }
 
   useEffect(() => {
-    // console.log("id: ", id);
     getCompetition();
   }, []);
 
@@ -60,27 +58,18 @@ function Competition(props) {
         <p>Breed: {filteredDog.breed}</p>
         <p>Age: {filteredDog.age}</p>
         <p>Shot: {filteredDog.shotStatus.toString()}</p>
-
-        <img src = {filteredDog.img} alt = "dogs" />
-        </li>
-      )
-    })
-     
- 
-
-
+        <img src={filteredDog.img} alt="dogs" />
+      </li>
+    );
+  });
   return (
     <>
       <header>
         <h1>{competitionTitle.exhibitionName}</h1>
       </header>
       <aside>
-
-      <button onClick = {handleClick}>Buy Tickets</button>
-      <button onClick = {handleClick2}>Register for Competition</button>
-
-    
-
+        <button onClick={handleClick}>Buy Tickets</button>
+        <button onClick={handleClick2}>Register for Competition</button>
       </aside>
       <ul>{mappedDogs}</ul>
     </>
