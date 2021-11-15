@@ -1,5 +1,4 @@
-function Tickets (props) {
-const competitions = props.competitions
+function Tickets ({competitions}) {
 
 const displayCompetitionDetails = competitions.map(competition => {
 return (
