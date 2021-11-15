@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-function Competition(props) {
+function Competition({dogs, competitions}) {
 
     const navigate = useNavigate();
     function handleClick (event, ticket) {
@@ -13,14 +13,6 @@ function Competition(props) {
       event.preventDefault()
       navigate(`/register`)
     }
-  
-  const dogs = props.dogs;
-  const competitions = props.competitions;
-
-
-  console.log("props inside competition: ", props);
-  console.log("dogs in competition: ", dogs);
-  console.log("competitions in Competition", competitions);
 
   const { id } = useParams();
   const [competition, setCompetition] = useState();
@@ -38,7 +30,6 @@ function Competition(props) {
   }
 
   useEffect(() => {
-    // console.log("id: ", id);
     getCompetition();
   }, []);
 
