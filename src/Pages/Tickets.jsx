@@ -1,22 +1,21 @@
 function Tickets (props) {
-const tickets = props.tickets
+const competitions = props.competitions
 
-const listOfTickets = tickets.map(ticket => {
+const displayCompetitionDetails = competitions.map(competition => {
 return (
-    <li>
-        <h2>Ticket</h2>
-        <p>Price: £{ticket.price}</p>
-        <p>Ticket Number: {ticket.ticketNumber}</p>
+    <li>        
+        <img src={competition.img} alt="Competition_img" />
+        <p>Price: £{competition.ticketPrice}</p>
     </li>
 )
 })
 return (
     <>
+    <h2>Tickets & Competitions</h2>
     <ul>
-        {listOfTickets}
+        {displayCompetitionDetails}      
     </ul>
     </>
 )
 }
-
 export default Tickets
