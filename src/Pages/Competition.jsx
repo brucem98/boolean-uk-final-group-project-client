@@ -1,18 +1,18 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-function Competition({dogs, competitions}) {
+function Competition({ dogs, competitions }) {
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
-    function handleClick (event, ticket) {
-      event.preventDefault()
-      navigate(`/tickets`)
-    }
+  function handleClick(event) {
+    event.preventDefault();
+    navigate(`/tickets`);
+  }
 
-    function handleClick2 (event, ticket) {
-      event.preventDefault()
-      navigate(`/register`)
-    }
+  function handleClick2(event) {
+    event.preventDefault();
+    navigate(`/register`);
+  }
 
   const { id } = useParams();
   const [competition, setCompetition] = useState();
@@ -51,27 +51,18 @@ function Competition({dogs, competitions}) {
         <p>Breed: {filteredDog.breed}</p>
         <p>Age: {filteredDog.age}</p>
         <p>Shot: {filteredDog.shotStatus.toString()}</p>
-
-        <img src = {filteredDog.img} alt = "dogs" />
-        </li>
-      )
-    })
-     
- 
-
-
+        <img src={filteredDog.img} alt="dogs" />
+      </li>
+    );
+  });
   return (
     <>
       <header>
         <h1>{competitionTitle.exhibitionName}</h1>
       </header>
       <aside>
-
-      <button onClick = {handleClick}>Buy Tickets</button>
-      <button onClick = {handleClick2}>Register for Competition</button>
-
-    
-
+        <button onClick={handleClick}>Buy Tickets</button>
+        <button onClick={handleClick2}>Register for Competition</button>
       </aside>
       <ul>{mappedDogs}</ul>
     </>
