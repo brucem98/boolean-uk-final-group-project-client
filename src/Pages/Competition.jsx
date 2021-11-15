@@ -14,13 +14,6 @@ function Competition({ dogs, competitions }) {
     navigate(`/register`);
   }
 
-  // const dogs = props.dogs;
-  // const competitions = props.competitions;
-
-  // console.log("props inside competition: ", props);
-  // console.log("dogs in competition: ", dogs);
-  // console.log("competitions in Competition", competitions);
-
   const { id } = useParams();
   const [competition, setCompetition] = useState();
   console.log("competition stateobject: ", competition);
