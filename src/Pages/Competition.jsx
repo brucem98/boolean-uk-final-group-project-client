@@ -38,7 +38,7 @@ function Competition(props) {
   }
 
   useEffect(() => {
-    console.log("id: ", id);
+    // console.log("id: ", id);
     getCompetition();
   }, []);
 

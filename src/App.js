@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import React from "react"
 import Home from './Pages/Home';
 import { useEffect, useState } from "react"
-
 import Competition from "./Pages/Competition";
 import Tickets from "./Pages/Tickets";
 import Register from "./Pages/Register";
@@ -23,7 +22,6 @@ function App() {
         setCompetitions(data.data)
       })
   }
-
   useEffect(() => {
     getCompetition()
   }, [])
@@ -38,7 +36,6 @@ function App() {
         setDogs(data.data)
       })
   }
-
   useEffect(() => {
     getDog()
   }, [])
@@ -53,7 +50,6 @@ function App() {
         setTickets(data.data)
       })
   }
-
   useEffect(() => {
     getTicket()
   }, [])
@@ -66,7 +62,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home competitions={competitions} />} />
         <Route exact path="/competitions/:id" element={<Competition competitions={competitions} dogs={dogs} />} />
-        <Route exact path="/tickets" element={<Tickets tickets={tickets} />} />
+        <Route exact path="/tickets" element={<Tickets tickets={tickets} competitions={competitions} />} />
         <Route exact path="/register" element={<Register />}/>
       </Routes>
     </BrowserRouter>
