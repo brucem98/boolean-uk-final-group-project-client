@@ -1,4 +1,5 @@
 import { useState } from "react";
+import SingleTicket from "./SingleTicket";
 
 function Tickets({ competitions, tickets, setTickets }) {
   const [firstName, setFirstName] = useState("");
@@ -6,6 +7,7 @@ function Tickets({ competitions, tickets, setTickets }) {
   const [email, setEmail] = useState("");
   const [vaccinated, setVaccinated] = useState(false);
   const [selectedCompetition, setSelectedCompetition] = useState("");
+
 
   console.log({
     firstName: firstName,
@@ -66,6 +68,7 @@ function Tickets({ competitions, tickets, setTickets }) {
       });
   };
 
+
   const displayCompetitionDetails = competitions.map((competition) => {
     return (
       <li>
@@ -74,6 +77,13 @@ function Tickets({ competitions, tickets, setTickets }) {
       </li>
     );
   });
+
+  const displayTicketsList = tickets.map((ticket) => {
+    return(
+     <SingleTicket ticket={ticket} />
+    )
+  
+  })
   return (
     <>
       <h2>Tickets & Competitions</h2>
@@ -86,6 +96,7 @@ function Tickets({ competitions, tickets, setTickets }) {
           id="filter-by-competition"
           className=""
         >
+          <option value=""> Select Competition</option>
           {competitions.map((comp) => (
             <option value={comp.id}>{comp.exhibitionName}</option>
           ))}
@@ -148,6 +159,8 @@ function Tickets({ competitions, tickets, setTickets }) {
           </button>
         </div>
       </form>
+      <h2>Ticket List</h2>
+      <ul>{displayTicketsList}</ul>
     </>
   );
 }
