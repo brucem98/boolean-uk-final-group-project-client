@@ -62,8 +62,8 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Home competitions={competitions} />} />
         <Route exact path="/competitions/:id" element={<Competition competitions={competitions} dogs={dogs} />} />
-        <Route exact path="/tickets" element={<Tickets tickets={tickets} setTickets={setTickets} competitions={competitions}/>}/> 
-        <Route exact path="/register" element={<Register />}/>
+        <Route exact path="/tickets" element={<Tickets tickets={tickets} setTickets={setTickets} competitions={competitions} />} />
+        <Route exact path="/register" element={<Register competitions={competitions} dogs={dogs} setDogs={setDogs} />}/>
       </Routes>
     </BrowserRouter>
   );
