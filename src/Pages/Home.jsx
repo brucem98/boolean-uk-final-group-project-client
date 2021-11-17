@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import HomeCheckBox from "./HomeCheckBox"
 
 function Home(props) {
     const navigate = useNavigate();
@@ -32,7 +33,7 @@ function Home(props) {
       <main>
         <section>
           <h2>List of all upcoming dog competitions:</h2>
-          <p>*FILTER COMPETITION BY DIFFICULTY HERE*</p>
+          <HomeCheckBox competitions = {competitions}/>
         </section>
         <section>
           <ul>{competitions}</ul>
