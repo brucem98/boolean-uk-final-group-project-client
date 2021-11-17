@@ -1,12 +1,14 @@
 import { useNavigate } from "react-router-dom";
 
 function Home(props) {
-    const navigate = useNavigate();
-    function handleClick (event, competition) {
-        event.preventDefault()
-        navigate(`/competitions/${competition.id}`)
-    }
-    
+  const navigate = useNavigate();
+
+  function handleClick(event, competition) {
+    event.preventDefault();
+
+    navigate(`/competitions/${competition.id}`);
+  }
+
   const competitions = props.competitions.map((competition, index) => {
     return (
       <li key={index}>

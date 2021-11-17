@@ -2,12 +2,12 @@ function SingleTicket(props) {
     const {firstName, lastName, vaccinated, competition, id } = props.ticket
 console.log("props in singleticket: ", props)
 
-    const handleTicketDelete = (event) => {
+    const handleTicketDelete = () => {
 
         const fetchTicketToDelete = {
             method: "DELETE",
         };
-        const delUrl = `http://localhost:3030/tickets/${id}`
+        const delUrl =`${process.env.REACT_APP_FETCH_URL}/tickets${id}`
         
         console.log("Inside ticket delUrl: ", delUrl)
 
