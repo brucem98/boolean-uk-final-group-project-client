@@ -91,26 +91,28 @@ function Register({ competitions, dogs, setDogs }) {
       .then((newDogOnParticipant) => {
         console.log({ NewDogInsideFetch: newDogOnParticipant });
         console.log("newDog", dogs);
-        setDogs(...dogs, newDogOnParticipant.data);
+        setDogs({ ...dogs, newDogOnParticipant });
       });
   };
 
-  const DisplayDogs = dogs.map((dog) => {
-    // dog.competitions.map((competition) => {
-    return (
-      <li>
-        <h3>Name: {dog.name}</h3>
-        <p>Breed: {dog.breed}</p>
-        <p>Age: {dog.petAge}</p>
-        <p>Shot: {dog.shotStatus.toString()}</p>
-        <img src={dog.img} alt="dogs" />
-        {/* <h3>First Name: {dog.participant.firstName}</h3>
-        <h3>Last Name: {dog.participant.lastName}</h3> */}
-        {/* <p>Event: {competition.exhibitionName}</p> */}
-      </li>
-    );
-  });
-  //   );
+//   const DisplayDogs = dogs.map((dog) => {
+    // const displayCompetitions = dog.competitions.map((comp) => (
+    //   <p>{comp.exhibitionName}</p>
+    // ));
+//     console.log({ dogMap: dog });
+//     return (
+//       <li>
+//         <h3>Name: {dog.name}</h3>
+//         <p>Breed: {dog.breed}</p>
+//         <p>Age: {dog.petAge}</p>
+//         <p>Shot: {dog.shotStatus.toString()}</p>
+//         <h3>First Name: {dog.participant.firstName}</h3>
+//         <h3>Last Name: {dog.participant.lastName}</h3>
+//         {/* <h3>Event: {displayCompetitions}</h3> */}
+//         <img src={dog.img} alt="dogs" />
+//       </li>
+//     );
+//   });
   return (
     <>
       <header>
@@ -242,7 +244,7 @@ function Register({ competitions, dogs, setDogs }) {
           </button>
         </div>
       </form>
-      <ul>{DisplayDogs}</ul>
+      {/* <ul>{DisplayDogs}</ul> */}
     </>
   );
 }

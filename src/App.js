@@ -25,7 +25,7 @@ function App() {
   useEffect(() => {
     getCompetition()
   }, [])
-  console.log("competitions", competitions)
+  console.log("Fetch competitions", competitions)
 
   function getDog() {
     const url = `${process.env.REACT_APP_FETCH_URL}/dogs`;
@@ -39,7 +39,7 @@ function App() {
   useEffect(() => {
     getDog()
   }, [])
-  console.log("dogs", dogs)
+  console.log("Fetch dogs", dogs)
 
   function getTicket() {
     const url = `${process.env.REACT_APP_FETCH_URL}/tickets`;
@@ -53,7 +53,7 @@ function App() {
   useEffect(() => {
     getTicket()
   }, [])
-  console.log("tickets", tickets)
+  console.log("Fetch tickets", tickets)
   
 
 
