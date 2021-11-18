@@ -38,7 +38,8 @@ function Home(props) {
         <h1>Dog Shows</h1>
       </header>
       <main className="three-column-grid">
-        <></>
+        <div></div>
+        <div>
         <section>
           <img
             className="header-img"
@@ -78,7 +79,7 @@ function Home(props) {
               })
               .map((competition, index) => {
                 return (
-                  <li key={index}>
+                  <li className="competition" key={index}>
                     <h3>{competition.exhibitionName}</h3>
                     <p>Date: {competition.date}</p>
                     <p>Location: {competition.location}</p>
@@ -96,8 +97,10 @@ function Home(props) {
               })}
           </ul>
         </section>
+        </div>
         <div></div>
       </main>
+      <footer></footer>
     </>
   );
 }

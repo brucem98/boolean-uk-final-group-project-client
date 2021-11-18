@@ -6,6 +6,19 @@
     max-width: 100%;
 }
 
+body {
+height: 100vh;
+/* background: rgb(77,255,241); */
+/* background: linear-gradient(0deg, rgba(77,255,241,1) 0%, rgba(0,0,0,0) 16%); */
+}
+
+footer{
+    height: 40px;
+    background: rgb(77,255,241);
+    /* background: linear-gradient(0deg, rgba(77,255,241,1) 0%, rgba(0,0,0,0) 16%); */
+}
+
+
 header {
     padding: 50px;
     text-align: center;

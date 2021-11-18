@@ -95,24 +95,24 @@ function Register({ competitions, dogs, setDogs }) {
       });
   };
 
-  const DisplayDogs = dogs.map((dog) => {
-    const displayCompetitions = dog.competitions.map((comp) => (
-      <p>{comp.exhibitionName}</p>
-    ));
-    console.log({ dogMap: dog });
-    return (
-      <li>
-        <h3>Name: {dog.name}</h3>
-        <p>Breed: {dog.breed}</p>
-        <p>Age: {dog.petAge}</p>
-        <p>Shot: {dog.shotStatus.toString()}</p>
-        <h3>First Name: {dog.participant.firstName}</h3>
-        <h3>Last Name: {dog.participant.lastName}</h3>
-        <h3>Event: {displayCompetitions}</h3>
-        <img src={dog.img} alt="dogs" />
-      </li>
-    );
-  });
+//   const DisplayDogs = dogs.map((dog) => {
+    // const displayCompetitions = dog.competitions.map((comp) => (
+    //   <p>{comp.exhibitionName}</p>
+    // ));
+//     console.log({ dogMap: dog });
+//     return (
+//       <li>
+//         <h3>Name: {dog.name}</h3>
+//         <p>Breed: {dog.breed}</p>
+//         <p>Age: {dog.petAge}</p>
+//         <p>Shot: {dog.shotStatus.toString()}</p>
+//         <h3>First Name: {dog.participant.firstName}</h3>
+//         <h3>Last Name: {dog.participant.lastName}</h3>
+//         {/* <h3>Event: {displayCompetitions}</h3> */}
+//         <img src={dog.img} alt="dogs" />
+//       </li>
+//     );
+//   });
   return (
     <>
       <header>
@@ -244,7 +244,7 @@ function Register({ competitions, dogs, setDogs }) {
           </button>
         </div>
       </form>
-      <ul>{DisplayDogs}</ul>
+      {/* <ul>{DisplayDogs}</ul> */}
     </>
   );
 }
