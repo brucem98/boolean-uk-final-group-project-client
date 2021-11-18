@@ -50,7 +50,7 @@ function EditTicketForm({ competitions, ticket }) {
       lastName,
       email,
       vaccinated,
-      selectedCompetition
+      competitionId: selectedCompetition
     }
     
     const fetchOptions = {
