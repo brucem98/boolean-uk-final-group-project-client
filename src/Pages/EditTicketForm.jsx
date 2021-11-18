@@ -1,26 +1,22 @@
 import { useState } from "react";
-import SingleTicket from "./SingleTicket";
-import EditTicketForm from "./EditTicketForm"
 
-function Tickets({ competitions, tickets, setTickets }) {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [vaccinated, setVaccinated] = useState(false);
-  const [selectedCompetition, setSelectedCompetition] = useState("");
 
-  //state for edit form - intermediary, holds data during transaction 
-  const [ticketToEdit, setTicketToEdit] = useState(null)
+function EditTicketForm({ competitions, ticket }) {
+  const [firstName, setFirstName] = useState(ticket.firstName);
+  const [lastName, setLastName] = useState(ticket.lastName);
+  const [email, setEmail] = useState(ticket.email);
+  const [vaccinated, setVaccinated] = useState(ticket.vaccinated);
+  const [selectedCompetition, setSelectedCompetition] = useState(ticket.selectedCompetition);
 
-  console.log("ticketToEdit in Tickets Componenet: ",ticketToEdit)
+  console.log("single ticket: ", ticket)
 
-  console.log({
+  console.log("EditTicketForm State Objects: ", {
     firstName: firstName,
     lastName: lastName,
     email: email,
     vaccinated: vaccinated,
     selectedCompetition: selectedCompetition,
-    tickets: tickets
+    id: ticket.id
   });
 
   const handleFilterByCompetition = (event) => {
@@ -48,53 +44,35 @@ function Tickets({ competitions, tickets, setTickets }) {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    const ticketToCreate = {
+
+    const ticketToUpdate = {
       firstName,
       lastName,
       email,
       vaccinated,
-      competitionId: selectedCompetition,
-    };
-
+      competitionId: selectedCompetition
+    }
+    
     const fetchOptions = {
-      method: "POST",
+      method: "PATCH",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
       },
-      body: JSON.stringify(ticketToCreate),
+      body: JSON.stringify(ticketToUpdate)
     };
-    const url = `${process.env.REACT_APP_FETCH_URL}/tickets`;
-    fetch(url, fetchOptions)
-      .then((res) => res.json())
-      .then((newTicket) => {
-        console.log({ newTicket: newTicket });
-        console.log("this tickets", tickets);
-        setTickets([...tickets, newTicket.data]);
-      });
-  };
 
-
-  const displayCompetitionDetails = competitions.map((competition) => {
-    return (
-      <li>
-        <img src={competition.img} alt="Competition_img" />
-        <p>Price: £{competition.ticketPrice}</p>
-      </li>
-    );
+  fetch(`http://localhost:3030/tickets/${ticket.id}`, fetchOptions)
+    .then((res) => res.json())
+    .then((updatedTicket) => {
+      console.log("tickets PATCH request: ", updatedTicket)
   });
+}
 
-  const displayTicketsList = tickets.map((ticket) => {
-    return(
-     <SingleTicket ticket={ticket} setTicketToEdit={setTicketToEdit}  ticketToEdit={ticketToEdit} competitions={competitions}/>
-    )
-  
-  })
+
   return (
     <>
-      <h2>Tickets & Competitions</h2>
-      <ul>{displayCompetitionDetails}</ul>
       <form className="" onSubmit={handleSubmit}>
-        <h1>Ticket Form</h1>
+        <h1>Edit Ticket Form</h1>
         <select
           onChange={handleFilterByCompetition}
           name="filter-by-competition"
@@ -160,14 +138,11 @@ function Tickets({ competitions, tickets, setTickets }) {
         </div>
         <div>
           <button className="" type="submit">
-            Buy Ticket
+            Edit Ticket
           </button>
         </div>
       </form>
-      <h2>Ticket List</h2>
-      <ul>{displayTicketsList}</ul>
-      {/* <EditTicketForm competitions={competitions} ticketToEdit={ticketToEdit}  /> */}
     </>
   );
 }
-export default Tickets;
+export default EditTicketForm;
