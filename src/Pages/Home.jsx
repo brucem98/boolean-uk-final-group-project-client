@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import './Css_pages/home.css';
+import HomeCheckBox from "./HomeCheckBox"
 
 function Home(props) {
   const navigate = useNavigate();
@@ -37,6 +38,7 @@ function Home(props) {
             <img className="header-img" src="http://dslv9ilpbe7p1.cloudfront.net/r_6XMNykapocTTNUXW4sMA_store_banner_image.jpeg" alt="" />
             <h2 className="spacer">List of all upcoming dog competitions:</h2>
             <p className="spacer">*FILTER COMPETITION BY DIFFICULTY HERE*</p>
+            <HomeCheckBox competitions={competitions} />
           </section>
           <section>
             <ul className="three-column-grid-comps">{competitions}</ul>
