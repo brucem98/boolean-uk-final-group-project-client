@@ -1,6 +1,7 @@
 import { useState } from "react";
 import SingleTicket from "./SingleTicket";
-
+import EditTicketForm from "./EditTicketForm"
+import "./Css_pages/tickets.css"
 
 function Tickets({ competitions, tickets, setTickets }) {
   const [firstName, setFirstName] = useState("");
@@ -76,9 +77,12 @@ function Tickets({ competitions, tickets, setTickets }) {
 
   const displayCompetitionDetails = competitions.map((competition) => {
     return (
-      <li>
-        <img src={competition.img} alt="Competition_img" />
-        <p>Price: £{competition.ticketPrice}</p>
+      <li className= "ticket-prices-list">
+        <img src={competition.img} alt="Competitions"/>
+        <div>
+        <p>Competition: <b>{competition.exhibitionName}</b></p>
+        <p>Price: <b>£{competition.ticketPrice}</b></p>
+        </div>
       </li>
     );
   });
@@ -91,10 +95,20 @@ function Tickets({ competitions, tickets, setTickets }) {
   })
   return (
     <>
-      <h2>Tickets & Competitions</h2>
-      <ul>{displayCompetitionDetails}</ul>
-      <form className="" onSubmit={handleSubmit}>
-        <h1>Ticket Form</h1>
+    <div>
+      <header className="ticket-header">
+      <h2>Ticket Purchase</h2>
+      </header>
+      <img className="main-ticket-img" src="https://cdn1.matadornetwork.com/blogs/1/2019/05/Dog-holding-a-ticket-at-K9-Cinemas-in-Plano-Texas-940x626.jpg" alt="Dog Holding Ticket with Mouth"/>
+    </div>  
+    <main className="ticket-spacer" className= "main-five-column-grid">
+      <div></div>
+      <div className="ticket-sections">
+      <h3 className="ticket-h3">Ticket Prices</h3>
+      <ul >{displayCompetitionDetails}</ul>
+      </div>
+      <form className="ticket-sections" onSubmit={handleSubmit}>
+        <h3 className="ticket-h3">Ticket Form</h3>
         <select
           onChange={handleFilterByCompetition}
           name="filter-by-competition"
@@ -164,9 +178,14 @@ function Tickets({ competitions, tickets, setTickets }) {
           </button>
         </div>
       </form>
-      <h2>Ticket List</h2>
+      <div className="ticket-sections">
+      <h3 className="ticket-h3">Ticket List</h3>
       <ul>{displayTicketsList}</ul>
+      </div>
       {/* <EditTicketForm competitions={competitions} ticketToEdit={ticketToEdit}  /> */}
+    <div></div>
+    </main>
+    <footer></footer>
     </>
   );
 }
