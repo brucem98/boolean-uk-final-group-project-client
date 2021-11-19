@@ -1,6 +1,6 @@
 import { useState } from "react";
 import SingleTicket from "./SingleTicket";
-import EditTicketForm from "./EditTicketForm"
+
 
 function Tickets({ competitions, tickets, setTickets }) {
   const [firstName, setFirstName] = useState("");

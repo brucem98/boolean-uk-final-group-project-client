@@ -1,15 +1,16 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import "./Css_pages/competition.css";
 
 function Competition({ dogs, competitions }) {
   const navigate = useNavigate();
 
-  function handleClick(event) {
+  function handleTicketClick(event) {
     event.preventDefault();
     navigate(`/tickets`);
   }
 
-  function handleClick2(event) {
+  function handleRegisterClick(event) {
     event.preventDefault();
     navigate(`/register`);
   }
@@ -47,11 +48,11 @@ function Competition({ dogs, competitions }) {
   const mappedDogs = filteredDogs.map((filteredDog) => {
     return (
       <li>
-        <h3>Name: {filteredDog.name}</h3>
-        <p>Breed: {filteredDog.breed}</p>
-        <p>Age: {filteredDog.age}</p>
-        <p>Shot: {filteredDog.shotStatus.toString()}</p>
-        <img src={filteredDog.img} alt="dogs" />
+        <h3 className="comp-text">Name: {filteredDog.name}</h3>
+        <p className="comp-text"> Breed: {filteredDog.breed}</p>
+        <p className="comp-text"> Age: {filteredDog.petAge}</p>
+        <p className="comp-text"> Shot: {filteredDog.shotStatus.toString()}</p>
+        <img className="competition-img" src={filteredDog.img} alt="dogs" />
       </li>
     );
   });
@@ -60,11 +61,18 @@ function Competition({ dogs, competitions }) {
       <header>
         <h1>{competitionTitle.exhibitionName}</h1>
       </header>
-      <aside>
-        <button onClick={handleClick}>Buy Tickets</button>
-        <button onClick={handleClick2}>Register for Competition</button>
+      <aside className="two-column-grid ">
+        <>
+          <button className="comp-btn" onClick={handleTicketClick}>
+            Buy Tickets
+          </button>
+        </>
+        <button className="comp-btn" onClick={handleRegisterClick}>
+          Register for Competition
+        </button>
       </aside>
-      <ul>{mappedDogs}</ul>
+      <ul className="four-column-grid">{mappedDogs}</ul>
+      <footer></footer>
     </>
   );
 }
