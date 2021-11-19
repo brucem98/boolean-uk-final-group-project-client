@@ -2,8 +2,8 @@ import { useState } from "react";
 import EditTicketForm from "./EditTicketForm";
 
 function SingleTicket(props) {
-    const {ticket, setTicketToEdit, ticketToEdit, competitions} = props
-    const {firstName, lastName, vaccinated, competition, email, id } = ticket
+    const {ticket, competitions, competition} = props
+    const {firstName, lastName, vaccinated, email, id } = ticket
     
     const [isEditing, setIsEditing] = useState(false);
         console.log("props in singleticket: ", props)
@@ -13,7 +13,7 @@ function SingleTicket(props) {
         const fetchTicketToDelete = {
             method: "DELETE",
         };
-        const delUrl =`${process.env.REACT_APP_FETCH_URL}/tickets${id}`
+        const delUrl =`${process.env.REACT_APP_FETCH_URL}/tickets/${id}`
         
         console.log("Inside ticket delUrl: ", delUrl)
 
@@ -25,10 +25,10 @@ function SingleTicket(props) {
         <>
         <li key ={id} className="tickets-list" className="ticket">
         <div>
-        <h2>{competition.exhibitionName}</h2>
-        <li><b>Ticket Price:</b> <em>£{competition.ticketPrice}</em></li>
+        <ul>{competition}</ul>
+        {/* <li><b>Ticket Price:</b> <em>£{competition.ticketPrice}</em></li>
         <li><b>Event Location:</b> <em>{competition.location}</em></li>
-        <li><b>Event Date:</b> <em>{competition.date}</em></li>
+        <li><b>Event Date:</b> <em>{competition.date}</em></li> */}
         <li><b>Name:</b> <em>{firstName} {lastName}</em></li>
         <li><b>Email:</b> <em>{email}</em></li>
         <li><b>Vaccination Status:</b> <em>{String(vaccinated)}</em></li>

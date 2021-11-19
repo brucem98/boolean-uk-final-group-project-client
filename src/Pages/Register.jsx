@@ -5,6 +5,7 @@ import SingleDog from "./SingleDog";
 function Register({ competitions, dogs, setDogs }) {
   //   competitionId
   const [selectedCompetition, setSelectedCompetition] = useState("");
+  // const [dogToDelete, setDogToDelete] = useState();
 
   // Dog details
   const [name, setName] = useState("");
@@ -63,6 +64,10 @@ function Register({ competitions, dogs, setDogs }) {
   const handleVaccinated = (event) => {
     setVaccinated(event.target.checked);
   };
+  // const handleDelete = (event) => {
+  //   setDogToDelete(event.target.checked);
+  // };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const dogOnParticipantToCreate = {
@@ -96,6 +101,25 @@ function Register({ competitions, dogs, setDogs }) {
         setDogs([...dogs, newDogOnParticipant]);
       });
   };
+
+  // const item = this.items.find((item) => item.id === id);
+  //   //find the index of the item in the list
+  //   let index = this.items.indexOf(item)
+  //   //remove from the list one elementsatrting at that index
+  //   this.items.splice(index, 1)
+  //   // return the list
+  //   return this.items
+
+  // const handleDelete = () => {
+  //   fetch(`http://localhost:3030/users/${id}`, { method: "DELETE" })
+  //     .then((res) => res.json())
+  //     .then(() => {
+  //       const updatedUsers = users.filter((user) => user.id !== id);
+  //       setDogToDelete(dogToDelete);
+
+  //       history.push("/users");
+  //     });
+  // };
 
   const DisplayDogs = dogs.map((dog) => {
     const displayCompetitions = dog.competitions
@@ -261,9 +285,9 @@ function Register({ competitions, dogs, setDogs }) {
               <button className="reg-btn" type="submit">
                 Register
               </button>
-              <button className="reg-btn" type="submit">
+              {/* <button onClick={handleDelete} className="reg-btn" type="submit">
                 Delete
-              </button>
+              </button> */}
             </div>
           </form>
         </section>
