@@ -4,25 +4,33 @@
   list-style-type: none;
   text-decoration: none;
   max-width: 100%;
+  box-sizing: border-box;
 }
 
 body {
   height: 100vh;
-  /* background: rgb(77,255,241); */
-  /* background: linear-gradient(0deg, rgba(77,255,241,1) 0%, rgba(0,0,0,0) 16%); */
+  /* background: linear-gradient(
+    180deg,
+    rgba(77, 255, 241, 1) 0%,
+    rgba(0, 0, 0, 0) 100%
+  ); */
 }
 
 footer {
   height: 40px;
   background: rgb(77, 255, 241);
-  /* background: linear-gradient(0deg, rgba(77,255,241,1) 0%, rgba(0,0,0,0) 16%); */
+  background: linear-gradient(
+    180deg,
+    rgba(77, 255, 241, 1) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
 }
 
 header {
   padding: 50px;
   text-align: center;
   font-size: 3ch;
-  background: rgb(77, 255, 241);
+  font-family: cursive;
   background: linear-gradient(
     180deg,
     rgba(77, 255, 241, 1) 0%,
@@ -38,7 +46,6 @@ header {
 .three-column-grid {
   display: grid;
   grid-template-columns: 1fr 4fr 1fr;
-  background: rgb(77, 255, 241);
   background: linear-gradient(
     0deg,
     rgba(77, 255, 241, 1) 0%,
@@ -54,19 +61,18 @@ header {
 }
 
 .competition {
-  border: 2px solid black;
+  /* border: 2px solid black; */
   border-radius: 15px;
   padding: 10px;
   background-color: white;
+  box-shadow: 1px 1px 1px 1px gray;
 }
 
 .competition h3 {
-  /* text-align: center; */
   font-size: 2.8ch;
 }
 
 .competition p {
-  /* text-align: center; */
   font-size: 1.8ch;
   margin-top: 5px;
   font-weight: 400;
@@ -90,4 +96,31 @@ header {
 .spacer {
   margin-top: 1rem;
   margin-bottom: 1rem;
+}
+
+.select-filter-home {
+  margin-bottom: 10px;
+  border-radius: 5px;
+  padding: 5px;
+  box-shadow: 0.5px 0.5px 0.5px 0.5px gray;
+}
+
+.home-btn {
+  border-radius: 5px;
+  padding: 3px;
+}
+
+.spacer-text {
+  font-family: Arial;
+  font-family: cursive;
+  text-align: center;
+}
+
+.home-pg-select {
+  font-family: cursive;
+}
+
+.four-column-grid {
+  display: grid;
+  grid-template-columns: 1fx 1fr 1fx 1fx;
 }

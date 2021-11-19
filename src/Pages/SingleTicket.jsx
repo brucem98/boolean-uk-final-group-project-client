@@ -20,19 +20,7 @@ function SingleTicket(props) {
         fetch(delUrl, fetchTicketToDelete)
          .then((res) => res.json())
     };
-    // const handleTicketEdit = (event) =>{
-    //     console.log("Handler Edit: ", props.ticket)
-    //     setTicketToEdit(ticket)
-    // }
-
-    // useEffect keeps track of the changes in the component, if ticketToEdit changes run this function 
-    useEffect(()=> {
-        if (ticketToEdit) {
-            // setFirstName(ticketToEdit.firstName)
-        }
-    }, [ticketToEdit])
-
-    
+        
     return(
         <>
         <li key ={id} className="tickets-list" className="ticket">
