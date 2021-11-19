@@ -277,6 +277,9 @@ function Register({ competitions, dogs, setDogs }) {
               <button className="reg-btn" type="submit">
                 Register
               </button>
+              <button className="reg-btn" type="submit">
+                Delete
+              </button>
             </div>
           </form>
         </section>

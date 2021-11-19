@@ -1,16 +1,16 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import "./Css_pages/competition.css"
+import "./Css_pages/competition.css";
 
 function Competition({ dogs, competitions }) {
   const navigate = useNavigate();
 
-  function handleClick(event) {
+  function handleTicketClick(event) {
     event.preventDefault();
     navigate(`/tickets`);
   }
 
-  function handleClick2(event) {
+  function handleRegisterClick(event) {
     event.preventDefault();
     navigate(`/register`);
   }
@@ -63,12 +63,16 @@ function Competition({ dogs, competitions }) {
       </header>
       <aside className="two-column-grid ">
         <>
-        <button className="comp-btn" onClick={handleClick}>Buy Tickets</button>
+          <button className="comp-btn" onClick={handleTicketClick}>
+            Buy Tickets
+          </button>
         </>
-        <button className="comp-btn" onClick={handleClick2}>Register for Competition</button>        
+        <button className="comp-btn" onClick={handleRegisterClick}>
+          Register for Competition
+        </button>
       </aside>
-      <ul className="four-column-grid">{mappedDogs}</ul> 
-      <footer></footer>     
+      <ul className="four-column-grid">{mappedDogs}</ul>
+      <footer></footer>
     </>
   );
 }
