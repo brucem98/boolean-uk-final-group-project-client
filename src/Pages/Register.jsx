@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "./Css_pages/register.css";
 
 function Register({ competitions, dogs, setDogs }) {
   //   competitionId
@@ -91,160 +92,196 @@ function Register({ competitions, dogs, setDogs }) {
       .then((newDogOnParticipant) => {
         console.log({ NewDogInsideFetch: newDogOnParticipant });
         console.log("newDog", dogs);
-        setDogs({ ...dogs, newDogOnParticipant });
+        setDogs([...dogs, newDogOnParticipant]);
       });
   };
 
-//   const DisplayDogs = dogs.map((dog) => {
-    // const displayCompetitions = dog.competitions.map((comp) => (
-    //   <p>{comp.exhibitionName}</p>
-    // ));
-//     console.log({ dogMap: dog });
-//     return (
-//       <li>
-//         <h3>Name: {dog.name}</h3>
-//         <p>Breed: {dog.breed}</p>
-//         <p>Age: {dog.petAge}</p>
-//         <p>Shot: {dog.shotStatus.toString()}</p>
-//         <h3>First Name: {dog.participant.firstName}</h3>
-//         <h3>Last Name: {dog.participant.lastName}</h3>
-//         {/* <h3>Event: {displayCompetitions}</h3> */}
-//         <img src={dog.img} alt="dogs" />
-//       </li>
-//     );
-//   });
+  const DisplayDogs = dogs.map((dog) => {
+    const displayCompetitions = dog.competitions
+      ? dog.competitions.map((comp) => <p>{comp.exhibitionName}</p>)
+      : null;
+    console.log({ dogMap: dog });
+    return (
+      <li>
+        <h3 className="reg-text">Dog details:</h3>
+        <h3 className="reg-text">Name: {dog.name}</h3>
+        <p className="reg-text">Breed: {dog.breed}</p>
+        <p className="reg-text">Age: {dog.petAge}</p>
+        <p className="reg-text">
+          Shot: {dog.shotStatus ? dog.shotStatus.toString() : null}
+        </p>
+        <h3 className="reg-text">Participant details:</h3>
+        <p className="reg-text">
+          First Name: {dog.participant ? dog.participant.firstName : null}
+        </p>
+        <p className="reg-text">
+          Last Name: {dog.participant ? dog.participant.lastName : null}
+        </p>
+        <h3>Event: {displayCompetitions}</h3>
+        <img className="reg-img" src={dog.img} alt="dogs" />
+      </li>
+    );
+  });
   return (
     <>
       <header>
         <h1>Register for Competition Here</h1>
       </header>
-      <form className="" onSubmit={handleSubmit}>
-        <select
-          onChange={handleFilterByCompetition}
-          name="filter-by-competition"
-          id="filter-by-competition"
-          className=""
-        >
-          <option value=""> Select Competition</option>
-          {competitions.map((comp) => (
-            <option value={comp.id}>{comp.exhibitionName}</option>
-          ))}
-        </select>
-        <h2>Pet Section</h2>
-        <div className="">
-          <label for="name">Name:</label>
-        </div>
-        <input
-          className=""
-          id="name"
-          name="name"
-          type="text"
-          placeholder="Enter pet's name..."
-          onChange={handlePetName}
-          value={name}
-        />
-        <div className="">
-          <label for="age">Age:</label>
-        </div>
-        <input
-          className=""
-          id="age"
-          name="age"
-          type="number"
-          placeholder="Enter pet's age..."
-          onChange={handlePetAge}
-          value={petAge}
-        />
-        <div className="">
-          <label for="breed">Breed:</label>
-        </div>
-        <input
-          className=""
-          id="breed"
-          name="breed"
-          type="text"
-          placeholder="Enter pet's breed..."
-          onChange={handlePetBreed}
-          value={breed}
-        />
-        <div className="">
-          <label for="img">Image:</label>
-        </div>
-        <input
-          className=""
-          id="img"
-          name="img"
-          type="text"
-          placeholder="Add pet's image..."
-          onChange={handlePetImage}
-          value={img}
-        />
-        <div className="">
-          <label for="shotStatus">Shot Status:</label>
-        </div>
-        <input
-          className=""
-          id="shotStatus"
-          name="shotStatus"
-          type="checkbox"
-          placeholder="Enter pet's shot status..."
-          onChange={handlePetShotStatus}
-          value={shotStatus}
-        />
-        <h2>Participant Section</h2>
-        <div className="">
-          <label for="firstName">First Name:</label>
-        </div>
-        <input
-          className=""
-          id="FirstName"
-          name="firstName"
-          type="text"
-          placeholder="Enter first name..."
-          onChange={handleFirstName}
-          value={firstName}
-        />
-        <div className="">
-          <label for="lastName">LastName:</label>
-        </div>
-        <input
-          className=""
-          id="lastName"
-          name="lastName"
-          type="text"
-          placeholder="Enter last name..."
-          onChange={handleLastName}
-          value={lastName}
-        />
-        <div className="">
-          <label for="age">Age:</label>
-        </div>
-        <input
-          className=""
-          id="age"
-          name="age"
-          type="number"
-          placeholder="Enter age..."
-          onChange={handleParticipantAge}
-          value={age}
-        />
-        <div className="">
-          <input
-            id="vaccinated"
-            name="vaccinated"
-            type="checkbox"
-            onChange={handleVaccinated}
-            checked={vaccinated}
-          />
-          <label for="checkbox">Vaccinated</label>
-        </div>
+      <section className="two-column-grid-reg">
         <div>
-          <button className="" type="submit">
-            Register
-          </button>
+          <ul className="three-column-grid-reg scroll">{DisplayDogs}</ul>
         </div>
-      </form>
-      {/* <ul>{DisplayDogs}</ul> */}
+        <section className="reg-form">
+          <form onSubmit={handleSubmit}>
+            <select
+              onChange={handleFilterByCompetition}
+              name="filter-by-competition"
+              id="filter-by-competition"
+              className="input select-input"
+            >
+              <option value=""> Select Competition</option>
+              {competitions.map((comp) => (
+                <option className="form-label" value={comp.id}>
+                  {comp.exhibitionName}
+                </option>
+              ))}
+            </select>
+            <h2 className="form-label">Pet Section</h2>
+            <div className="">
+              <label className="form-label" for="name">
+                Name:
+              </label>
+            </div>
+            <input
+              className="input"
+              id="name"
+              name="name"
+              type="text"
+              placeholder="Enter pet's name..."
+              onChange={handlePetName}
+              value={name}
+            />
+            <div className="">
+              <label className="form-label" for="age">
+                Age:
+              </label>
+            </div>
+            <input
+              className="input"
+              id="age"
+              name="age"
+              type="number"
+              placeholder="Enter pet's age..."
+              onChange={handlePetAge}
+              value={petAge}
+            />
+            <div className="">
+              <label className="form-label" for="breed">
+                Breed:
+              </label>
+            </div>
+            <input
+              className="input"
+              id="breed"
+              name="breed"
+              type="text"
+              placeholder="Enter pet's breed..."
+              onChange={handlePetBreed}
+              value={breed}
+            />
+            <div className="">
+              <label className="form-label" for="img">
+                Image:
+              </label>
+            </div>
+            <input
+              className="input"
+              id="img"
+              name="img"
+              type="text"
+              placeholder="Add pet's image..."
+              onChange={handlePetImage}
+              value={img}
+            />
+            <div className="">
+              <input
+                className="checkbox"
+                id="shotStatus"
+                name="shotStatus"
+                type="checkbox"
+                placeholder="Enter pet's shot status..."
+                onChange={handlePetShotStatus}
+                value={shotStatus}
+              />
+              <label className="form-label" for="shotStatus">
+                Shot Status
+              </label>
+            </div>
+            <h2 className="form-label">Participant Section</h2>
+            <div className="">
+              <label className="form-label" for="firstName">
+                First Name:
+              </label>
+            </div>
+            <input
+              className="input"
+              id="FirstName"
+              name="firstName"
+              type="text"
+              placeholder="Enter first name..."
+              onChange={handleFirstName}
+              value={firstName}
+            />
+            <div className="">
+              <label className="form-label" for="lastName">
+                LastName:
+              </label>
+            </div>
+            <input
+              className="input"
+              id="lastName"
+              name="lastName"
+              type="text"
+              placeholder="Enter last name..."
+              onChange={handleLastName}
+              value={lastName}
+            />
+            <div className="">
+              <label className="form-label" for="age">
+                Age:
+              </label>
+            </div>
+            <input
+              className="input"
+              id="age"
+              name="age"
+              type="number"
+              placeholder="Enter age..."
+              onChange={handleParticipantAge}
+              value={age}
+            />
+            <div className="checkbox">
+              <input
+                className=""
+                id="vaccinated"
+                name="vaccinated"
+                type="checkbox"
+                onChange={handleVaccinated}
+                checked={vaccinated}
+              />
+              <label className="form-label" for="checkbox">
+                Vaccinated
+              </label>
+            </div>
+            <div>
+              <button className="reg-btn" type="submit">
+                Register
+              </button>
+            </div>
+          </form>
+        </section>
+      </section>
+      <footer></footer>
     </>
   );
 }
