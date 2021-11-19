@@ -1,7 +1,6 @@
 import { useState } from "react";
 import SingleTicket from "./SingleTicket";
-import EditTicketForm from "./EditTicketForm"
-import "./Css_pages/tickets.css"
+import "./Css_pages/tickets.css";
 
 function Tickets({ competitions, tickets, setTickets }) {
   const [firstName, setFirstName] = useState("");
@@ -10,10 +9,7 @@ function Tickets({ competitions, tickets, setTickets }) {
   const [vaccinated, setVaccinated] = useState(false);
   const [selectedCompetition, setSelectedCompetition] = useState("");
 
-  //state for edit form - intermediary, holds data during transaction 
-  const [ticketToEdit, setTicketToEdit] = useState(null)
-
-  console.log("ticketToEdit in Tickets Componenet: ",ticketToEdit)
+  //state for edit form - intermediary, holds data during transaction
 
   console.log({
     firstName: firstName,
@@ -21,7 +17,7 @@ function Tickets({ competitions, tickets, setTickets }) {
     email: email,
     vaccinated: vaccinated,
     selectedCompetition: selectedCompetition,
-    tickets: tickets
+    tickets: tickets,
   });
 
   const handleFilterByCompetition = (event) => {
@@ -74,118 +70,146 @@ function Tickets({ competitions, tickets, setTickets }) {
       });
   };
 
-
   const displayCompetitionDetails = competitions.map((competition) => {
     return (
-      <li className= "ticket-prices-list">
-        <img src={competition.img} alt="Competitions"/>
+      <li className="ticket-prices-list">
+        <img src={competition.img} alt="Competitions" />
         <div>
-        <p>Competition: <b>{competition.exhibitionName}</b></p>
-        <p>Price: <b>£{competition.ticketPrice}</b></p>
+          <p>
+            Competition: <b>{competition.exhibitionName}</b>
+          </p>
+          <p>
+            Price: <b>£{competition.ticketPrice}</b>
+          </p>
         </div>
       </li>
     );
   });
 
   const displayTicketsList = tickets.map((ticket) => {
-    return(
-     <SingleTicket ticket={ticket} setTicketToEdit={setTicketToEdit}  ticketToEdit={ticketToEdit} competitions={competitions}/>
-    )
-  
-  })
+    const displayCompetitions = ticket.competitions
+      ? ticket.competitions.map((competition) => {
+          return (
+            <li>
+              <p>{competition.exhibitionName}</p>
+              <li>
+                <b>Ticket Price:</b> <em>£{competition.ticketPrice}</em>
+              </li>
+              <li>
+                <b>Event Location:</b> <em>{competition.location}</em>
+              </li>
+              <li>
+                <b>Event Date:</b> <em>{competition.date}</em>
+              </li>
+            </li>
+          );
+        })
+      : null;
+    return (
+      <SingleTicket
+        ticket={ticket}
+        competitions={competitions}
+        competition={displayCompetitions}
+      />
+    );
+  });
   return (
     <>
-    <div>
-      <header className="ticket-header">
-      <h2>Ticket Purchase</h2>
-      </header>
-      <img className="main-ticket-img" src="https://cdn1.matadornetwork.com/blogs/1/2019/05/Dog-holding-a-ticket-at-K9-Cinemas-in-Plano-Texas-940x626.jpg" alt="Dog Holding Ticket with Mouth"/>
-    </div>  
-    <main className="ticket-spacer" className= "main-five-column-grid">
-      <div></div>
-      <div className="ticket-sections">
-      <h3 className="ticket-h3">Ticket Prices</h3>
-      <ul >{displayCompetitionDetails}</ul>
+      <div>
+        <header className="ticket-header">
+          <h2>Ticket Purchase</h2>
+        </header>
+        <img
+          className="main-ticket-img"
+          src="https://cdn1.matadornetwork.com/blogs/1/2019/05/Dog-holding-a-ticket-at-K9-Cinemas-in-Plano-Texas-940x626.jpg"
+          alt="Dog Holding Ticket with Mouth"
+        />
       </div>
-      <form className="ticket-sections" onSubmit={handleSubmit}>
-        <h3 className="ticket-h3">Ticket Form</h3>
-        <select
-          onChange={handleFilterByCompetition}
-          name="filter-by-competition"
-          id="filter-by-competition"
-          className=""
-        >
-          <option value=""> Select Competition</option>
-          {competitions.map((comp) => (
-            <option value={comp.id}>{comp.exhibitionName}</option>
-          ))}
-          {/* <option value=""> Filter by competition</option>
+      <main className="ticket-spacer" className="main-five-column-grid">
+        <div></div>
+        <div className="ticket-sections">
+          <h3 className="ticket-h3">Ticket Prices</h3>
+          <ul>{displayCompetitionDetails}</ul>
+        </div>
+        <form className="ticket-sections" onSubmit={handleSubmit}>
+          <h3 className="ticket-h3">Ticket Form</h3>
+          <select
+            onChange={handleFilterByCompetition}
+            name="filter-by-competition"
+            id="filter-by-competition"
+            className=""
+          >
+            <option value=""> Select Competition</option>
+            {competitions.map((comp) => (
+              <option value={comp.id}>{comp.exhibitionName}</option>
+            ))}
+            {/* <option value=""> Filter by competition</option>
           <option value="Doggie Olympics">Doggie Olympics</option>
           <option value="Highampresss">Highampresss</option>
           <option value="The Kennel Club">The Kennel Club</option>
           <option value="Puppy Face-Off">Puppy Face-Off</option> */}
-        </select>
+          </select>
 
-        <div className="">
-          <label for="firstName">First Name:</label>
-        </div>
-        <input
-          className=""
-          id="name"
-          name="first-name"
-          type="text"
-          placeholder="Enter first name..."
-          onChange={handleFirstName}
-          value={firstName}
-        />
-        <div className="">
-          <label for="lastName">LastName:</label>
-        </div>
-        <input
-          className=""
-          id="lastName"
-          name="last-name"
-          type="text"
-          placeholder="Enter last name..."
-          onChange={handleLastName}
-          value={lastName}
-        />
-        <div className="">
-          <label for="email">Email:</label>
-        </div>
-        <input
-          className=""
-          id="email"
-          name="email"
-          type="email"
-          placeholder="Enter email..."
-          onChange={handleEmail}
-          value={email}
-        />
-        <div className="">
+          <div className="">
+            <label for="firstName">First Name:</label>
+          </div>
           <input
-            id="vaccinated"
-            name="vaccinated"
-            type="checkbox"
-            onChange={handleVaccinated}
-            checked={vaccinated}
+            className=""
+            id="name"
+            name="first-name"
+            type="text"
+            placeholder="Enter first name..."
+            onChange={handleFirstName}
+            value={firstName}
           />
-          <label for="checkbox">Vaccinated</label>
+          <div className="">
+            <label for="lastName">LastName:</label>
+          </div>
+          <input
+            className=""
+            id="lastName"
+            name="last-name"
+            type="text"
+            placeholder="Enter last name..."
+            onChange={handleLastName}
+            value={lastName}
+          />
+          <div className="">
+            <label for="email">Email:</label>
+          </div>
+          <input
+            className=""
+            id="email"
+            name="email"
+            type="email"
+            placeholder="Enter email..."
+            onChange={handleEmail}
+            value={email}
+          />
+          <div className="">
+            <input
+              id="vaccinated"
+              name="vaccinated"
+              type="checkbox"
+              onChange={handleVaccinated}
+              checked={vaccinated}
+            />
+            <label for="checkbox">Vaccinated</label>
+          </div>
+          <div>
+            <button className="" type="submit">
+              Buy Ticket
+            </button>
+          </div>
+        </form>
+        <div className="ticket-sections">
+          <h3 className="ticket-h3">Ticket List</h3>
+          <ul>{displayTicketsList}</ul>
         </div>
-        <div>
-          <button className="" type="submit">
-            Buy Ticket
-          </button>
-        </div>
-      </form>
-      <div className="ticket-sections">
-      <h3 className="ticket-h3">Ticket List</h3>
-      <ul>{displayTicketsList}</ul>
-      </div>
-      {/* <EditTicketForm competitions={competitions} ticketToEdit={ticketToEdit}  /> */}
-    <div></div>
-    </main>
-    <footer></footer>
+        {/* <EditTicketForm competitions={competitions} ticketToEdit={ticketToEdit}  /> */}
+        <div></div>
+      </main>
+      <footer></footer>
     </>
   );
 }
