@@ -35,21 +35,24 @@ function SingleTicket(props) {
     
     return(
         <>
-        <li key ={id}>
-        <h3>{competition.exhibitionName}</h3>
-        <li>Ticket Price: £{competition.ticketPrice}</li>
-        <li>Event Location: {competition.location}</li>
-        <li>Event Date: {competition.date}</li>
-        <li>Name: {firstName} {lastName}</li>
-        <li>Email: {email} </li>
-        <li>Vaccination Status: {String(vaccinated)}</li>
-        <img src= "https://www.seekpng.com/png/detail/48-486207_ticket-icon-tickets-vector-icon.png" alt="Ticket"/>
-        <button onClick={handleTicketDelete}>
+        <li key ={id} className="tickets-list" className="ticket">
+        <div>
+        <h2>{competition.exhibitionName}</h2>
+        <li><b>Ticket Price:</b> <em>£{competition.ticketPrice}</em></li>
+        <li><b>Event Location:</b> <em>{competition.location}</em></li>
+        <li><b>Event Date:</b> <em>{competition.date}</em></li>
+        <li><b>Name:</b> <em>{firstName} {lastName}</em></li>
+        <li><b>Email:</b> <em>{email}</em></li>
+        <li><b>Vaccination Status:</b> <em>{String(vaccinated)}</em></li>
+        </div>
+        <div>
+        <button className="ticket-delete-button" onClick={handleTicketDelete}>
             Remove Ticket
         </button>
-        <button onClick={() => setIsEditing(!isEditing)}>
+        <button className="ticket-edit-button" onClick={() => setIsEditing(!isEditing)}>
             Edit Ticket
         </button>
+        </div>
       </li>
       {isEditing && <EditTicketForm competitions={competitions} ticket={ticket}/>}
       </>

@@ -1,0 +1,125 @@
+* {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  text-decoration: none;
+  max-width: 100%;
+}
+
+.ticket-header {
+  position: relative;
+  margin-top: 85px;
+  padding: 100px;
+  text-align: center;
+  font-size: 6ch;
+  background: rgb(77, 255, 241);
+  background: linear-gradient(
+    180deg,
+    rgba(77, 255, 241, 1) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.main-ticket-img {
+  width: 600px;
+  position: absolute;
+  top: 2px;
+  left: 100px;
+}
+
+.ticket-prices-list {
+  margin-top: 50px;
+  width: 600px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 25px;
+}
+
+.ticket-prices-list div {
+  margin-top: 75px;
+}
+
+.ticket-icon {
+  width: 150px;
+}
+
+.ticket-sections {
+  margin-top: 50px;
+  padding-bottom: 40px;
+  border: 2px solid black;
+  border-radius: 8px;
+}
+
+.tickets-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.main-five-column-grid {
+  display: grid;
+  grid-template-columns: 75px 1fr 1fr 1fr 75px;
+  gap: 25px;
+}
+
+.ticket-h3 {
+  font-size: 4ch;
+  margin-top: 50px;
+  margin-bottom: 75px;
+  text-align: center;
+}
+
+.ticket-spacer {
+  margin-top: 7rem;
+  margin-bottom: 1rem;
+}
+
+.ticket {
+  position: relative;
+  border: 2px solid black;
+  background: cornflowerblue;
+  color: black;
+  text-align: center;
+  display: inline-block;
+  padding: 1em 2em;
+  margin: 3.5px;
+}
+
+.ticket:before,
+.ticket:after {
+  height: 90px;
+  width: 45px;
+  content: "";
+  position: absolute;
+  top: 0.9em;
+  top: calc(5.25em - 2px);
+  height: 3em;
+  width: 1.6em;
+  border: 2px solid black;
+  background: white;
+}
+.ticket:before {
+  left: -2px;
+  border-radius: 0 1em 1em 0;
+  border-left-color: white;
+}
+.ticket:after {
+  right: -2px;
+  border-radius: 1em 0 0 1em;
+  border-right-color: white;
+}
+
+.ticket h2 {
+  color: navy;
+}
+
+.ticket-delete-button {
+  background-color: rgb(220, 20, 60);
+  font-weight: bold;
+  margin: 2.5px;
+}
+
+.ticket-edit-button {
+  background-color: rgb(255, 229, 180);
+  font-weight: bold;
+  margin: 2.5px;
+}

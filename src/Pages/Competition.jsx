@@ -49,7 +49,7 @@ function Competition({ dogs, competitions }) {
       <li>
         <h3>Name: {filteredDog.name}</h3>
         <p>Breed: {filteredDog.breed}</p>
-        <p>Age: {filteredDog.age}</p>
+        <p>Age: {filteredDog.petAge}</p>
         <p>Shot: {filteredDog.shotStatus.toString()}</p>
         <img src={filteredDog.img} alt="dogs" />
       </li>
