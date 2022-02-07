@@ -133,6 +133,7 @@ function Tickets({ competitions, tickets, setTickets }) {
         </div>
         <form className="ticket-sections" onSubmit={handleSubmit}>
           <h3 className="ticket-h3">Ticket Form</h3>
+          <div className="ticket-form-main">
           <select
             onChange={handleFilterByCompetition}
             name="filter-by-competition"
@@ -143,11 +144,6 @@ function Tickets({ competitions, tickets, setTickets }) {
             {competitions.map((comp) => (
               <option value={comp.id}>{comp.exhibitionName}</option>
             ))}
-            {/* <option value=""> Filter by competition</option>
-          <option value="Doggie Olympics">Doggie Olympics</option>
-          <option value="Highampresss">Highampresss</option>
-          <option value="The Kennel Club">The Kennel Club</option>
-          <option value="Puppy Face-Off">Puppy Face-Off</option> */}
           </select>
 
           <div className="">
@@ -201,7 +197,9 @@ function Tickets({ competitions, tickets, setTickets }) {
               Buy Ticket
             </button>
           </div>
+        </div>
         </form>
+        
         <div className="ticket-sections">
           <h3 className="ticket-h3">Ticket List</h3>
           <ul>{displayTicketsList}</ul>
