@@ -25,7 +25,7 @@ function Home(props) {
           <section>
             <img
               className="header-img"
-              src="https://www.franchise-uk.co.uk/wp-content/uploads/2015/03/DogsDogsandDogs.jpg"
+              src="https://previews.123rf.com/images/eriklam/eriklam1204/eriklam120400001/13060551-gruppe-von-zw%C3%B6lf-hunde-sitzen-vor-einem-wei%C3%9Fen-hintergrund.jpg"
               alt="dog-home"
             />
             <h2 className="spacer spacer-text">
