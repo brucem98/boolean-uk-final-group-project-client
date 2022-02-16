@@ -68,7 +68,7 @@ function Competition({ dogs, competitions }) {
           </button>
         </>
         <button className="comp-btn" onClick={handleRegisterClick}>
-          Register for Competition234
+          Register for Competition
         </button>
       </aside>
       <ul className="four-column-grid">{mappedDogs}</ul>
