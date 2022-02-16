@@ -86,7 +86,7 @@
 .ticket {
   position: relative;
   border: 2px solid black;
-  background: cornflowerblue;
+  background: rgb(65, 116, 212);
   color: black;
   text-align: center;
   display: inline-block;
