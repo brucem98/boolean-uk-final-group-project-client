@@ -25,8 +25,8 @@ function Home(props) {
           <section>
             <img
               className="header-img"
-              src="http://dslv9ilpbe7p1.cloudfront.net/r_6XMNykapocTTNUXW4sMA_store_banner_image.jpeg"
-              alt=""
+              src="https://www.franchise-uk.co.uk/wp-content/uploads/2015/03/DogsDogsandDogs.jpg"
+              alt="dog-home"
             />
             <h2 className="spacer spacer-text">
               List Of All Upcoming Dog Competitions
