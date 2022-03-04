@@ -25,8 +25,8 @@ function Home(props) {
           <section>
             <img
               className="header-img"
-              src="http://dslv9ilpbe7p1.cloudfront.net/r_6XMNykapocTTNUXW4sMA_store_banner_image.jpeg"
-              alt=""
+              src="https://previews.123rf.com/images/eriklam/eriklam1204/eriklam120400001/13060551-gruppe-von-zw%C3%B6lf-hunde-sitzen-vor-einem-wei%C3%9Fen-hintergrund.jpg"
+              alt="dog-home"
             />
             <h2 className="spacer spacer-text">
               List Of All Upcoming Dog Competitions
