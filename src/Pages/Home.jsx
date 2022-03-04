@@ -58,7 +58,7 @@ function Home(props) {
           </section>
           <section>
             <ul className="three-column-grid-comps">
-              {props.competitions
+              {props.competitions && props.competitions
                 .filter((competition) => {
                   if (
                     selectedCompetition === competition.difficulty ||

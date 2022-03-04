@@ -71,7 +71,7 @@ function EditTicketForm({ competitions, ticket }) {
           className=""
         >
           <option value=""> Select Competition</option>
-          {competitions.map((comp) => (
+          {competitions && competitions.map((comp) => (
             <option value={comp.id}>{comp.exhibitionName}</option>
           ))}
         </select>

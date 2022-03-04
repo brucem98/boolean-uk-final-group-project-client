@@ -8,22 +8,34 @@ function SingleTicket(props) {
     const [isEditing, setIsEditing] = useState(false);
         console.log("props in singleticket: ", props)
 
+        // const handleDelete = (id) => {
+        //     fetch(`${process.env.REACT_APP_FETCH_URL}/taxis/${id}`, {
+        //       method: "DELETE",
+        //     })
+        //       .then((res) => res.json())
+        //       .then(() => {
+        //         const updatedTaxis = taxis.filter((taxi) => taxi.id !== id);
+        //         setTaxis(updatedTaxis);
+        //       });
+        //   };
+        
+
     const handleTicketDelete = () => {
 
         const fetchTicketToDelete = {
             method: "DELETE",
-        };
+        }
         const delUrl =`${process.env.REACT_APP_FETCH_URL}/tickets/${id}`
         
         console.log("Inside ticket delUrl: ", delUrl)
 
         fetch(delUrl, fetchTicketToDelete)
          .then((res) => res.json())
-    };
+    }
         
     return(
         <>
-        <li key ={id} className="tickets-list" className="ticket">
+        <li key ={id} className="tickets-list ticket">
         <div>
         <ul>{competition}</ul>
         <li><b>Name:</b> <em>{firstName} {lastName}</em></li>

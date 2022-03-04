@@ -7,7 +7,6 @@ function Register({ competitions, dogs, setDogs }) {
   const [selectedBreed, setSelectedBreed] = useState("");
   //   competitionId
   const [selectedCompetition, setSelectedCompetition] = useState("");
-  // const [dogToDelete, setDogToDelete] = useState();
 
   // Dog details
   const [name, setName] = useState("");
@@ -71,18 +70,6 @@ function Register({ competitions, dogs, setDogs }) {
     console.log({ handleDogBreed: event.target.value });
     setSelectedBreed(event.target.value);
   };
-  // const handleReset = (event) => {
-  //   event.preventDefault()
-  //   setName("");
-  //   setPetAge("");
-  //   setBreed("");
-  //   setImg("");
-  //   setShotStatus(false);
-  //   setFirstName("");
-  //   setLastName("");
-  //   setAge("");
-  //   setVaccinated(false);
-  // };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -118,52 +105,37 @@ function Register({ competitions, dogs, setDogs }) {
       });
   };
 
-  // const item = this.items.find((item) => item.id === id);
-  //   //find the index of the item in the list
-  //   let index = this.items.indexOf(item)
-  //   //remove from the list one elementsatrting at that index
-  //   this.items.splice(index, 1)
-  //   // return the list
-  //   return this.items
-
-  // const handleDelete = () => {
-  //   fetch(`http://localhost:3030/users/${id}`, { method: "DELETE" })
-  //     .then((res) => res.json())
-  //     .then(() => {
-  //       const updatedUsers = users.filter((user) => user.id !== id);
-  //       setDogToDelete(dogToDelete);
-
-  //       history.push("/users");
-  //     });
-  // };
-
-  const filteredNewDogs = dogs.sort().filter((dog) => {
-    return dog.competitions.filter((comp) => {
-      console.log({ insideFilter: comp, dog });
-      if (
-        selectedBreed === dog.breed.toLowerCase().includes(comp) ||
-        selectedBreed === ""
-      ) {
-        return true;
-      } else {
-        return false;
-      }
+  const filteredNewDogs =
+    dogs &&
+    dogs.sort().filter((dog) => {
+      return dog.competitions.filter((comp) => {
+        console.log({ insideFilter: comp, dog });
+        if (
+          selectedBreed === dog.breed.toLowerCase().includes(comp) ||
+          selectedBreed === ""
+        ) {
+          return true;
+        } else {
+          return false;
+        }
+      });
     });
-  });
   console.log({ filteredNewDogs: filteredNewDogs });
-  const DisplayDogs = filteredNewDogs.map((dog, key) => {
-    const displayCompetitions = dog.competitions
-      ? dog.competitions.map((comp) => <p>{comp.exhibitionName}</p>)
-      : null;
-    console.log({ displayCompetitions: displayCompetitions });
-    return (
-      <SingleDog
-        dog={dog}
-        key={key}
-        displayCompetitions={displayCompetitions}
-      />
-    );
-  });
+  const DisplayDogs =
+    filteredNewDogs &&
+    filteredNewDogs.map((dog, key) => {
+      const displayCompetitions = dog.competitions
+        ? dog.competitions.map((comp) => <p>{comp.exhibitionName}</p>)
+        : null;
+      console.log({ displayCompetitions: displayCompetitions });
+      return (
+        <SingleDog
+          dog={dog}
+          key={key}
+          displayCompetitions={displayCompetitions}
+        />
+      );
+    });
   const breeds = new Set(dogs.map((dog) => dog.breed));
   return (
     <>
@@ -335,9 +307,6 @@ function Register({ competitions, dogs, setDogs }) {
               <button className="reg-btn" type="submit">
                 Register
               </button>
-              {/* <button onClick={handleReset} className="reg-btn" type="reset">
-                Reset
-              </button> */}
             </div>
           </form>
         </section>

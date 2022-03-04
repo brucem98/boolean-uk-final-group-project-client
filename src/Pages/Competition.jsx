@@ -26,7 +26,7 @@ function Competition({ dogs, competitions }) {
       .then((res) => res.json())
       .then((data) => {
         console.log("data: ", data);
-        setCompetition(data.data);
+        data && setCompetition(data.data);
       });
   }
 
@@ -34,16 +34,18 @@ function Competition({ dogs, competitions }) {
     getCompetition();
   }, []);
 
-  const competitionTitle = competitions.find(
-    (competition) => competition.id === parseInt(id)
-  );
+  const competitionTitle =
+    competitions &&
+    competitions.find((competition) => competition.id === parseInt(id));
   console.log("competitionTitle: ", competitionTitle);
 
-  const filteredDogs = dogs.filter(
-    (dog) =>
-      dog.competitions.filter((comp) => comp.competitionId === parseInt(id))
-        .length > 0
-  );
+  const filteredDogs =
+    dogs &&
+    dogs.filter(
+      (dog) =>
+        dog.competitions.filter((comp) => comp.competitionId === parseInt(id))
+          .length > 0
+    );
   console.log("filtered dogs now: ", filteredDogs);
   const mappedDogs = filteredDogs.map((filteredDog) => {
     return (
