@@ -3,6 +3,8 @@ import "./Css_pages/register.css";
 import SingleDog from "./SingleDog";
 
 function Register({ competitions, dogs, setDogs }) {
+  // dog
+  const [selectedBreed, setSelectedBreed] = useState("");
   //   competitionId
   const [selectedCompetition, setSelectedCompetition] = useState("");
   // const [dogToDelete, setDogToDelete] = useState();
@@ -12,7 +14,7 @@ function Register({ competitions, dogs, setDogs }) {
   const [petAge, setPetAge] = useState("");
   const [breed, setBreed] = useState("");
   const [img, setImg] = useState("");
-  const [shotStatus, setShotStatus] = useState("");
+  const [shotStatus, setShotStatus] = useState(false);
   // Participant details
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -30,6 +32,7 @@ function Register({ competitions, dogs, setDogs }) {
     age: age,
     vaccinated: vaccinated,
     selectedCompetition: selectedCompetition,
+    selectedBreed: selectedBreed,
   });
 
   const handleFilterByCompetition = (event) => {
@@ -64,8 +67,21 @@ function Register({ competitions, dogs, setDogs }) {
   const handleVaccinated = (event) => {
     setVaccinated(event.target.checked);
   };
-  // const handleDelete = (event) => {
-  //   setDogToDelete(event.target.checked);
+  const handleDogBreed = (event) => {
+    console.log({ handleDogBreed: event.target.value });
+    setSelectedBreed(event.target.value);
+  };
+  // const handleReset = (event) => {
+  //   event.preventDefault()
+  //   setName("");
+  //   setPetAge("");
+  //   setBreed("");
+  //   setImg("");
+  //   setShotStatus(false);
+  //   setFirstName("");
+  //   setLastName("");
+  //   setAge("");
+  //   setVaccinated(false);
   // };
 
   const handleSubmit = (event) => {
@@ -121,20 +137,54 @@ function Register({ competitions, dogs, setDogs }) {
   //     });
   // };
 
-  const DisplayDogs = dogs.map((dog) => {
+  const filteredNewDogs = dogs.sort().filter((dog) => {
+    return dog.competitions.filter((comp) => {
+      console.log({ insideFilter: comp, dog });
+      if (
+        selectedBreed === dog.breed.toLowerCase().includes(comp) ||
+        selectedBreed === ""
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    });
+  });
+  console.log({ filteredNewDogs: filteredNewDogs });
+  const DisplayDogs = filteredNewDogs.map((dog, key) => {
     const displayCompetitions = dog.competitions
       ? dog.competitions.map((comp) => <p>{comp.exhibitionName}</p>)
       : null;
-    console.log({ dogMap: dog });
+    console.log({ displayCompetitions: displayCompetitions });
     return (
-     <SingleDog displayCompetitions={displayCompetitions} dog={dog}/>
+      <SingleDog
+        dog={dog}
+        key={key}
+        displayCompetitions={displayCompetitions}
+      />
     );
   });
+  const breeds = new Set(dogs.map((dog) => dog.breed));
   return (
     <>
       <header>
         <h1>Register for Competition Here</h1>
       </header>
+      <section className="dog-select">
+        <select
+          onChange={handleDogBreed}
+          name="filter-by-dog-breed"
+          id="filter-by-dog-breed"
+          className="input select-input"
+        >
+          <option value=""> Select Dog breed....</option>
+          {[...breeds].sort().map((breed) => (
+            <option className="form-label" value={breed}>
+              {breed}
+            </option>
+          ))}
+        </select>
+      </section>
       <section className="two-column-grid-reg">
         <div>
           <ul className="three-column-grid-reg scroll">{DisplayDogs}</ul>
@@ -285,8 +335,8 @@ function Register({ competitions, dogs, setDogs }) {
               <button className="reg-btn" type="submit">
                 Register
               </button>
-              {/* <button onClick={handleDelete} className="reg-btn" type="submit">
-                Delete
+              {/* <button onClick={handleReset} className="reg-btn" type="reset">
+                Reset
               </button> */}
             </div>
           </form>

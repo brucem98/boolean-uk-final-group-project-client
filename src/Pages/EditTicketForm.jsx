@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-
 function EditTicketForm({ competitions, ticket }) {
   const [firstName, setFirstName] = useState(ticket.firstName);
   const [lastName, setLastName] = useState(ticket.lastName);
@@ -22,14 +21,6 @@ function EditTicketForm({ competitions, ticket }) {
   const handleFilterByCompetition = (event) => {
     setSelectedCompetition(parseInt(event.target.value));
   };
-  // {
-  //   competitions.filter((competition) => {
-  //     if (selectedCompetition === competition.exhibitionName) {
-  //       return competition.id;
-  //     }
-  //   });
-  // }
-
   const handleFirstName = (event) => {
     setFirstName(event.target.value);
   };
@@ -61,7 +52,7 @@ function EditTicketForm({ competitions, ticket }) {
       body: JSON.stringify(ticketToUpdate)
     };
 
-  fetch(`http://localhost:3030/tickets/${ticket.id}`, fetchOptions)
+  fetch(`${process.env.REACT_APP_FETCH_URL}/tickets/${ticket.id}`, fetchOptions)
     .then((res) => res.json())
     .then((updatedTicket) => {
       console.log("tickets PATCH request: ", updatedTicket)
@@ -83,11 +74,6 @@ function EditTicketForm({ competitions, ticket }) {
           {competitions.map((comp) => (
             <option value={comp.id}>{comp.exhibitionName}</option>
           ))}
-          {/* <option value=""> Filter by competition</option>
-          <option value="Doggie Olympics">Doggie Olympics</option>
-          <option value="Highampresss">Highampresss</option>
-          <option value="The Kennel Club">The Kennel Club</option>
-          <option value="Puppy Face-Off">Puppy Face-Off</option> */}
         </select>
 
         <div className="">

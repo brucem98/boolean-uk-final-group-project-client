@@ -26,9 +26,6 @@ function SingleTicket(props) {
         <li key ={id} className="tickets-list" className="ticket">
         <div>
         <ul>{competition}</ul>
-        {/* <li><b>Ticket Price:</b> <em>£{competition.ticketPrice}</em></li>
-        <li><b>Event Location:</b> <em>{competition.location}</em></li>
-        <li><b>Event Date:</b> <em>{competition.date}</em></li> */}
         <li><b>Name:</b> <em>{firstName} {lastName}</em></li>
         <li><b>Email:</b> <em>{email}</em></li>
         <li><b>Vaccination Status:</b> <em>{String(vaccinated)}</em></li>

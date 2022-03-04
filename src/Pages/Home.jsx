@@ -39,7 +39,6 @@ function Home(props) {
                 className="select-filter-home"
               >
                 <option className="home-pg-select" value="">
-                  {" "}
                   Filter Competitions By Levels
                 </option>
                 <option className="home-pg-select" value="Hard">
