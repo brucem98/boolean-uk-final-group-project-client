@@ -37,7 +37,7 @@ function Competition({ dogs, competitions }) {
   const competitionTitle =
     competitions &&
     competitions.find((competition) => competition.id === parseInt(id));
-  console.log("competitionTitle: ", competitionTitle);
+ 
 
   const filteredDogs =
     dogs &&
@@ -46,8 +46,8 @@ function Competition({ dogs, competitions }) {
         dog.competitions.filter((comp) => comp.competitionId === parseInt(id))
           .length > 0
     );
-  console.log("filtered dogs now: ", filteredDogs);
-  const mappedDogs = filteredDogs.map((filteredDog) => {
+
+  const mappedDogs = filteredDogs && filteredDogs.map((filteredDog) => {
     return (
       <li>
         <h3 className="comp-text">Name: {filteredDog.name}</h3>
