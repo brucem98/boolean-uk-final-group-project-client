@@ -125,7 +125,7 @@ function Tickets({ competitions, tickets, setTickets }) {
           alt="Dog Holding Ticket with Mouth"
         />
       </div>
-      <main className="ticket-spacer" className="main-five-column-grid">
+      <main className="ticket-spacer main-five-column-grid">
         <div></div>
         <div className="ticket-sections">
           <h3 className="ticket-h3">Ticket Prices</h3>
